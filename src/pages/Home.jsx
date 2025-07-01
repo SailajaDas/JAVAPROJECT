@@ -8,7 +8,6 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [topicIndex, setTopicIndex] = useState(0);
 
-  // Java code animation states
   const javaSnippet = [
     "public class HelloWorld {",
     "    public static void main(String[] args) {",
@@ -51,10 +50,10 @@ const Home = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white font-sans overflow-hidden">
-      {/* Background animation */}
+   
 
       <main className="flex-grow relative z-10">
-        {/* Hero Section */}
+     
         <section className="relative px-6 md:px-20 py-32 flex flex-col md:flex-row justify-between items-center">
           <div
             className={`max-w-xl transform transition-all duration-1000 ${
@@ -65,7 +64,7 @@ const Home = () => {
           >
             <h1 className="text-4xl md:text-5xl font-bold leading-[1.3] mb-6 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
               <Typewriter
-                words={["Master Java the Smart Way"]}
+                words={["Crack Java Concepts, the Smart Buddy Way!"]}
                 loop={false}
                 cursor
                 cursorStyle="|"
@@ -83,11 +82,9 @@ const Home = () => {
 
             <div className="flex gap-4 animate-fade-in-up">
               <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/50 animate-bounce">
-              <Link to="/dashboard">  Get Started</Link>
+              <Link to="/dashboard/introduction">  Get Started</Link>
               </button>
-              {/* <button className="border border-white hover:bg-white hover:text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-                Learn More
-              </button> */}
+              
             </div>
           </div>
 

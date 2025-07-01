@@ -11,6 +11,7 @@ import {
   Package,
   Grid,
   AlertTriangle,
+  HelpCircle,
 } from "lucide-react";
 
 import ScrollPage from "../scrollButton/ScrollPage";
@@ -149,24 +150,39 @@ const Dashboard = () => {
       icon: Package,
       links: [
         { label: "Object Class", path: "/dashboard/lang/objectclass" },
-        { label: "Object Class Methods", path: "/dashboard/lang/objectmethods" },
+        // {
+        //   label: "Object Class Methods",
+        //   path: "/dashboard/lang/objectmethods",
+        // },
         { label: "String Class", path: "/dashboard/lang/stringclass" },
-        { label: "String Methods", path: "/dashboard/lang/stringmethods" },
-        { label: "StringBuffer", path: "/dashboard/lang/stringbuffer" },
-        { label: "StringBuffer Methods", path: "/dashboard/lang/stringbuffermethods" },
+        { label: "String Class Methods", path: "/dashboard/lang/stringmethods" },
+        { label: "StringBuffer Class", path: "/dashboard/lang/stringbuffer" },
+        {
+          label: "StringBuffer Class Methods",
+          path: "/dashboard/lang/stringbuffermethods",
+        },
+        { label: "StringBuilder Class", path: "/dashboard/lang/stringbuilder" },
         { label: "Wrapper Class", path: "/dashboard/lang/wrapperclass" },
-        { label: "Wrapper Constructors", path: "/dashboard/lang/wrapperconstructors" },
-        { label: "Wrapper Methods", path: "/dashboard/lang/wrappermethods" },
-        { label: "Autoboxing/Unboxing", path: "/dashboard/lang/autoboxing" },
+        {
+          label: "Wrapper Constructors",
+          path: "/dashboard/lang/wrapperconstructors",
+        },
+        { label: "Utility Methods", path: "/dashboard/lang/wrappermethods" },
+        {
+          label: "Autoboxing/Autounboxing",
+          path: "/dashboard/lang/autoboxing",
+        },
       ],
     },
     {
       title: "Collection Framework",
       icon: Grid,
       links: [
-        { label: "Interfaces", path: "/dashboard/collection/interfaces" },
-        { label: "Classes", path: "/dashboard/collection/classes" },
-        { label: "Methods", path: "/dashboard/collection/methods" },
+        { label: "CollectionFramework", path: "/dashboard/collection/framework" },
+        { label: "List", path: "/dashboard/collection/list" },
+        { label: "Set", path: "/dashboard/collection/set" },
+        { label: "Queue", path: "/dashboard/collection/queue" },
+        { label: "Map", path: "/dashboard/collection/map" },
       ],
     },
     {
@@ -178,6 +194,11 @@ const Dashboard = () => {
       title: "Exception Handling",
       links: [{ label: "Exception Handling", path: "/dashboard/exceptions" }],
       icon: AlertTriangle,
+    },
+     {
+      title: "Interview Questions",
+      links: [{ label: "Interview Questions", path: "/dashboard/interview" }],
+      icon: HelpCircle,
     },
   ];
 

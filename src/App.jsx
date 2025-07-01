@@ -54,13 +54,22 @@ import WrapperConstructors from "./components/dashboardpages/java.langPackage/Wr
 import WrapperMethods from "./components/dashboardpages/java.langPackage/WrapperMethods";
 import AutoboxingUnboxing from "./components/dashboardpages/java.langPackage/AutoboxingUnboxing";
 import ErrorPage from "./pages/ErrorPage";
+import StringBuilder from "./components/dashboardpages/java.langPackage/StringBuilder";
+import Array from "./components/dashboardpages/arrays/Array";
+import Exception from "./components/dashboardpages/exceptionHandling/Exception";
+import InterviewQuestion from "./components/dashboardpages/interviewquestion/InterviewQuestion";
+import CollectionFramework from "./components/dashboardpages/collectionFramework/CollectionFramework";
+import List from "./components/dashboardpages/collectionFramework/List";
+import Set from "./components/dashboardpages/collectionFramework/Set";
+import Queue from "./components/dashboardpages/collectionFramework/Queue";
+import Map from "./components/dashboardpages/collectionFramework/Map";
 
 const App = () => {
   const routes = createBrowserRouter([
     {
       path: "/",
       element: <Layout />,
-      errorElement:<ErrorPage/>,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: "/",
@@ -149,38 +158,146 @@ const App = () => {
               path: "oops/methods",
               element: <Methods />,
             },
-            { path: "oops/features", element: <Featuresofmethod /> },
-            { path: "oops/inheritance", element: <Inheritance /> },
-            { path: "oops/overloading", element: <MethodOverloading /> },
-            { path: "oops/overriding", element: <MethodOverriding /> },
-            { path: "oops/modifiers", element: <Modifiers /> },
-            { path: "oops/constructors", element: <Constructors /> },
-            { path: "oops/interface", element: <Interface /> },
-            { path: "oops/blocks", element: <Blocks /> },
-            { path: "oops/casting", element: <ObjectTypeCasting /> },
-            { path: "oops/factory", element: <FactoryMethod /> },
-            { path: "oops/singleton", element: <SingletonClasss /> },
-            { path: "oops/hiding", element: <DataHiding /> },
-            { path: "oops/abstraction", element: <Abstraction /> },
-            { path: "oops/encapsulation", element: <Encapsulation /> },
-            { path: "oops/polymorphism", element: <Polymorphism /> },
+            {
+              path: "oops/features",
+              element: <Featuresofmethod />,
+            },
+            {
+              path: "oops/inheritance",
+              element: <Inheritance />,
+            },
+            {
+              path: "oops/overloading",
+              element: <MethodOverloading />,
+            },
+            {
+              path: "oops/overriding",
+              element: <MethodOverriding />,
+            },
+            {
+              path: "oops/modifiers",
+              element: <Modifiers />,
+            },
+            {
+              path: "oops/constructors",
+              element: <Constructors />,
+            },
+            {
+              path: "oops/interface",
+              element: <Interface />,
+            },
+            {
+              path: "oops/blocks",
+              element: <Blocks />,
+            },
+            {
+              path: "oops/casting",
+              element: <ObjectTypeCasting />,
+            },
+            {
+              path: "oops/factory",
+              element: <FactoryMethod />,
+            },
+            {
+              path: "oops/singleton",
+              element: <SingletonClasss />,
+            },
+            {
+              path: "oops/hiding",
+              element: <DataHiding />,
+            },
+            {
+              path: "oops/abstraction",
+              element: <Abstraction />,
+            },
+            {
+              path: "oops/encapsulation",
+              element: <Encapsulation />,
+            },
+            {
+              path: "oops/polymorphism",
+              element: <Polymorphism />,
+            },
+
             //java.lang
-            { path: "lang/objectclass", element: <ObjectClass /> },
-            { path: "lang/objectmethods", element: <ObjectClassMethod /> },
-            { path: "lang/stringclass", element: <StringClass /> },
-            { path: "lang/stringmethods", element: <StringMethods /> },
-            { path: "lang/stringbuffer", element: <StringBuffer /> },
+            {
+              path: "lang/objectclass",
+              element: <ObjectClass />,
+            },
+            {
+              path: "lang/objectmethods",
+              element: <ObjectClassMethod />,
+            },
+            {
+              path: "lang/stringclass",
+              element: <StringClass />,
+            },
+            {
+              path: "lang/stringmethods",
+              element: <StringMethods />,
+            },
+            {
+              path: "lang/stringbuffer",
+              element: <StringBuffer />,
+            },
             {
               path: "lang/stringbuffermethods",
               element: <StringBufferMethods />,
             },
-            { path: "lang/wrapperclass", element: <WrapperClass /> },
+            {
+              path: "lang/stringbuilder",
+              element: <StringBuilder />,
+            },
+            {
+              path: "lang/wrapperclass",
+              element: <WrapperClass />,
+            },
             {
               path: "lang/wrapperconstructors",
               element: <WrapperConstructors />,
             },
-            { path: "lang/wrappermethods", element: <WrapperMethods /> },
-            { path: "lang/autoboxing", element: <AutoboxingUnboxing /> },
+            {
+              path: "lang/wrappermethods",
+              element: <WrapperMethods />,
+            },
+            {
+              path: "lang/autoboxing",
+              element: <AutoboxingUnboxing />,
+            },
+            {
+              path: "arrays",
+              element: <Array />,
+            },
+            {
+              path: "exceptions",
+              element: <Exception />,
+            },
+            {
+              path: "interview",
+              element: <InterviewQuestion />,
+            },
+
+            //collection
+            {
+              path: "collection/framework",
+              element: <CollectionFramework />,
+            },
+            {
+              path: "collection/list",
+              element: <List />,
+            },
+            {
+              path: "collection/set",
+              element: <Set />,
+            },
+            {
+              path: "collection/queue",
+              element: <Queue />,
+            },
+            {
+              path: "collection/map",
+              element: <Map />,
+            },
           ],
         },
         {

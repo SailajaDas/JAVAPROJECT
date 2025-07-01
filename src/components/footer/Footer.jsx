@@ -17,7 +17,7 @@ const Footer = () => {
           <h2 className="text-2xl font-bold text-green-400 mb-4"> Java Buddy</h2>
           <p className="text-sm leading-relaxed">
             Your smart Java learning companion. Learn core concepts like OOP,
-            Collections, Multithreading & more — made simple, interactive and fun.
+            Collections,Exceptions & more — made simple, interactive and fun.
           </p>
         </div>
 
@@ -45,16 +45,15 @@ const Footer = () => {
             <a href="#" className="hover:text-white transition transform hover:scale-110">
               <Twitter />
             </a>
-            <a href="mailto:javabuddy@email.com" className="hover:text-white transition transform hover:scale-110">
+            <a href="#" className="hover:text-white transition transform hover:scale-110">
               <Mail />
             </a>
           </div>
-          <p className="text-sm">📩 javabuddy@email.com</p>
+          <p className="text-sm">📩 javabuddy@gmail.com</p>
         </div>
       </div>
 
-      {/* Bottom Line */}
-      <div className="mt-5 border-t border-gray-800 pt-6 text-center text-sm text-gray-500 animate-pulse rounded-br-2xl">
+      <div className="mt-5 border-t border-gray-800 pt-6 text-center text-sm text-gray-200 animate-pulse rounded-br-2xl">
         © {new Date().getFullYear()} <span className="text-green-400 font-semibold">Java Buddy</span>. All rights reserved.
       </div>
     </footer>

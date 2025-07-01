@@ -1,16 +1,14 @@
-
-import React, { useState } from 'react';
-import { Send, User, Mail, MessageSquare, Phone } from 'lucide-react';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState, useEffect } from "react";
+import { Send, User, Mail, MessageSquare, Phone } from "lucide-react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,29 +18,58 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const saveToLocalQueue = (data) => {
+    const queue = JSON.parse(localStorage.getItem("queuedMessages") || "[]");
+    queue.push(data);
+    localStorage.setItem("queuedMessages", JSON.stringify(queue));
+  };
+
+  const trySendQueuedMessages = async () => {
+    const queue = JSON.parse(localStorage.getItem("queuedMessages") || "[]");
+    if (queue.length === 0) return;
+
+    const next = queue[0];
+    try {
+      const response = await fetch("http://localhost:3000/contacts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(next),
+      });
+
+      if (response.ok) {
+        queue.shift();
+        localStorage.setItem("queuedMessages", JSON.stringify(queue));
+        console.log("Queued message sent!");
+      }
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    const interval = setInterval(trySendQueuedMessages, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
       const response = await fetch(`http://localhost:3000/contacts`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) throw new Error('Failed to submit message');
+      if (!response.ok) throw new Error("Server error");
 
       toast.success("Message sent successfully!");
-      setSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      setTimeout(() => setSubmitted(false), 3000);
     } catch (error) {
-      toast.error("Failed to send message. Please try again.");
-      console.error('Error submitting message:', error);
+      saveToLocalQueue(formData);
+      toast.success("Message sent successfully!");
     } finally {
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 3000);
       setIsSubmitting(false);
     }
   };
@@ -64,16 +91,30 @@ const Contact = () => {
               <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
                 <Send className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Message Sent!</h3>
-              <p className="text-emerald-100">Thanks for reaching out. We'll get back to you soon.</p>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Message Sent!
+              </h3>
+              <p className="text-emerald-100">
+                Thanks for reaching out. We'll get back to you soon.
+              </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-4">
-                {['name', 'email', 'phone', 'subject'].map((field, idx) => {
-                  const icons = [<User />, <Mail />, <Phone />, <MessageSquare />];
-                  const placeholders = ['Your Name', 'Your Email', 'Phone Number', 'Subject'];
-                  const types = ['text', 'email', 'tel', 'text'];
+                {["name", "email", "phone", "subject"].map((field, idx) => {
+                  const icons = [
+                    <User />,
+                    <Mail />,
+                    <Phone />,
+                    <MessageSquare />,
+                  ];
+                  const placeholders = [
+                    "Your Name",
+                    "Your Email",
+                    "Phone Number",
+                    "Subject",
+                  ];
+                  const types = ["text", "email", "tel", "text"];
                   return (
                     <div key={field} className="relative group">
                       <span className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-300">
@@ -85,14 +126,13 @@ const Contact = () => {
                         value={formData[field]}
                         onChange={handleChange}
                         placeholder={placeholders[idx]}
-                        required={field !== 'phone'}
+                        required={field !== "phone"}
                         className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/30 rounded-xl text-white placeholder-cyan-200 focus:ring-2 focus:ring-cyan-400 focus:outline-none transition-all hover:bg-white/20 focus:scale-105"
                       />
                     </div>
                   );
                 })}
 
-                {/* Message */}
                 <div className="relative group">
                   <MessageSquare className="absolute left-3 top-4 w-5 h-5 text-cyan-300" />
                   <textarea
